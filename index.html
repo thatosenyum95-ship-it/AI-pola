@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071225">
+<meta name="description" content="AI Pola — demo klasifikasi teks, prediksi angka, dan pengenalan pola.">
+<title>AI Pola — Belajar Mengenali Pola</title>
+<style>
+:root{color-scheme:dark;--bg:#071225;--panel:#0e1b33;--panel2:#122443;--text:#edf5ff;--muted:#a6b5cf;--cyan:#48e0e8;--purple:#9a83ff;--line:#263b5e;--green:#7be7b1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#1a2752 0,transparent 35%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1080px,92%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:16px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.1rem;letter-spacing:.2px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#163a63,#281d5e);display:grid;place-items:center;border:1px solid #41618e}.logo svg{width:29px}.pill{border:1px solid var(--line);border-radius:99px;color:var(--muted);padding:7px 12px;font-size:.78rem}.hero{padding:44px 0 30px;max-width:760px}.eyebrow{color:var(--cyan);font-size:.8rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(2.25rem,7vw,4.5rem);line-height:1.05;letter-spacing:-2px;margin:14px 0}.grad{background:linear-gradient(90deg,var(--cyan),#a7a0ff);color:transparent;background-clip:text}.hero p{color:var(--muted);font-size:1.06rem;max-width:650px}.status{display:inline-flex;align-items:center;gap:8px;margin-top:10px;color:#c5d3e9;font-size:.85rem}.dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 14px #7be7b1}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0 18px}.tab{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px 10px;text-align:left;color:var(--muted);transition:.2s}.tab strong{display:block;color:var(--text);font-size:.95rem;margin:4px 0}.tab span{font-size:1.3rem}.tab[aria-selected=true]{border-color:var(--cyan);background:linear-gradient(145deg,#102d48,#171d42);box-shadow:0 0 0 1px #48e0e822}.workspace{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:stretch}.card{background:linear-gradient(150deg,#101f39,#0c182c);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,28px);min-width:0}.card h2{margin:0 0 6px;font-size:1.3rem}.muted{color:var(--muted)}.small{font-size:.88rem}.field{display:block;margin:20px 0 10px;font-weight:700;font-size:.92rem}textarea,input{width:100%;background:#071225;border:1px solid #2c4265;border-radius:12px;color:var(--text);padding:14px;outline:none}textarea{resize:vertical;min-height:120px}input:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #48e0e81a}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.primary,.secondary{border-radius:12px;padding:12px 16px;font-weight:800;border:1px solid transparent}.primary{background:linear-gradient(100deg,var(--cyan),#91b5ff);color:#071225}.secondary{background:#142541;color:var(--text);border-color:#2b4163}.result{margin-top:20px;border:1px dashed #3a5278;border-radius:14px;padding:16px;background:#09152a;min-height:96px}.result .label{font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}.result strong{display:block;font-size:1.25rem;margin:5px 0;color:var(--cyan);overflow-wrap:anywhere}.result p{margin:5px 0 0;color:var(--muted);font-size:.9rem}.side-title{font-weight:800;margin:0 0 12px}.feature{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #20324e}.feature:last-child{border:0}.feature-icon{width:38px;height:38px;flex:none;border-radius:12px;background:#152b4a;display:grid;place-items:center}.feature b{display:block;font-size:.93rem}.feature p{margin:3px 0 0;color:var(--muted);font-size:.83rem}.notice{border:1px solid #4c4381;background:#211e43;color:#d9d4ff;border-radius:12px;padding:12px 14px;margin-top:18px;font-size:.83rem}.hidden{display:none!important}.footer{padding:34px 0 40px;color:var(--muted);font-size:.82rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.footer a{color:var(--cyan);text-decoration:none}.tag{display:inline-block;border-radius:7px;padding:3px 8px;background:#17334c;color:var(--cyan);font-size:.74rem;margin-top:8px}@media(max-width:720px){.hero{padding-top:28px}.workspace{grid-template-columns:1fr}.tabs{gap:7px}.tab{padding:12px 9px}.tab strong{font-size:.82rem}.tab span{font-size:1.1rem}.pill{font-size:.7rem}.footer{padding-bottom:25px}}@media(max-width:390px){.tabs{grid-template-columns:1fr}.tab{display:flex;align-items:center;gap:12px}.tab strong{margin:0}.tab small{margin-left:auto}}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><g stroke="#48e0e8" stroke-width="1.8"><path d="M10 10L20 20 30 9M10 30L20 20 30 30M10 10V30M30 9V30"/></g><g fill="#9a83ff" stroke="#071225" stroke-width="1.5"><circle cx="10" cy="10" r="4"/><circle cx="30" cy="9" r="4"/><circle cx="10" cy="30" r="4"/><circle cx="30" cy="30" r="4"/></g><circle cx="20" cy="20" r="5" fill="#48e0e8"/></svg></div><span>AI POLA</span></div>
+  <span class="pill">PROTOTIPE v1.0</span>
+</header>
+<main class="wrap">
+<section class="hero">
+  <div class="eyebrow">Eksperimen kecerdasan buatan</div>
+  <h1>Belajar mengenali<br><span class="grad">pola dengan AI.</span></h1>
+  <p>Tempat sederhana untuk mencoba tiga kemampuan: memahami kategori teks, memperkirakan angka, dan mengelompokkan pola data.</p>
+  <div class="status"><span class="dot"></span> Demo interaktif berjalan di perangkatmu</div>
+</section>
+<nav class="tabs" aria-label="Pilih alat AI">
+  <button class="tab" data-tab="text" aria-selected="true"><span>✦</span><strong>Klasifikasi Teks</strong><small>Kelompokkan kalimat</small></button>
+  <button class="tab" data-tab="number" aria-selected="false"><span>∑</span><strong>Prediksi Angka</strong><small>Perkirakan nilai</small></button>
+  <button class="tab" data-tab="pattern" aria-selected="false"><span>⌘</span><strong>Pengenalan Pola</strong><small>Kelompokkan titik</small></button>
+</nav>
+<section class="workspace">
+<div class="card">
+  <div id="textPanel">
+    <h2>Klasifikasi teks</h2><p class="muted small">Tulis kalimat, lalu lihat kategori yang paling cocok menurut aturan demo.</p>
+    <label class="field" for="textInput">Kalimat yang ingin diperiksa</label>
+    <textarea id="textInput" maxlength="500" placeholder="Contoh: Halo, selamat pagi!"></textarea>
+    <div class="actions"><button class="primary" id="classifyBtn">Analisis teks ↗</button><button class="secondary" id="textExample">Coba contoh</button></div>
+  </div>
+  <div id="numberPanel" class="hidden">
+    <h2>Prediksi angka</h2><p class="muted small">Demo memakai contoh hubungan linear y = 2x. Masukkan angka x untuk menghitung perkiraan y.</p>
+    <label class="field" for="numberInput">Nilai x</label><input id="numberInput" type="number" step="any" value="11" placeholder="Masukkan angka">
+    <div class="actions"><button class="primary" id="predictBtn">Prediksi angka ↗</button><button class="secondary" id="numberExample">Isi contoh</button></div>
+  </div>
+  <div id="patternPanel" class="hidden">
+    <h2>Pengenalan pola</h2><p class="muted small">Masukkan dua nilai untuk melihat kelompok terdekat dari tiga pusat contoh.</p>
+    <label class="field" for="xInput">Nilai X</label><input id="xInput" type="number" step="any" value="1">
+    <label class="field" for="yInput">Nilai Y</label><input id="yInput" type="number" step="any" value="1">
+    <div class="actions"><button class="primary" id="patternBtn">Kenali pola ↗</button><button class="secondary" id="patternExample">Isi contoh</button></div>
+  </div>
+  <div class="result" aria-live="polite"><div class="label">Hasil analisis</div><strong id="resultTitle">AI Pola siap dicoba</strong><p id="resultDetail">Pilih salah satu alat dan masukkan data untuk memulai.</p></div>
+  <div class="notice">Catatan: ini masih prototipe edukasi berbasis aturan sederhana di browser, bukan model bahasa besar dan belum terhubung ke model Python di repositori.</div>
+</div>
+<aside class="card">
+  <h2 class="side-title">Apa yang bisa dicoba?</h2>
+  <div class="feature"><div class="feature-icon">✦</div><div><b>Klasifikasi teks</b><p>Mengelompokkan kalimat sebagai sapaan, pertanyaan, emosi, atau kategori lain berdasarkan kata kunci.</p></div></div>
+  <div class="feature"><div class="feature-icon">∑</div><div><b>Prediksi angka</b><p>Menghitung perkiraan dari contoh hubungan angka sederhana.</p></div></div>
+  <div class="feature"><div class="feature-icon">⌘</div><div><b>Pengenalan pola</b><p>Membandingkan titik dengan tiga kelompok contoh menggunakan jarak terdekat.</p></div></div>
+  <div class="tag">Dirancang untuk layar HP</div>
+  <p class="muted small" style="margin-top:18px">Langkah berikutnya: hubungkan antarmuka ini dengan model AI Pola yang dilatih dari dataset proyek.</p>
+</aside>
+</section>
+</main>
+<footer class="wrap footer"><span>© 2026 AI Pola · Proyek belajar AI</span><a href="https://github.com/thatosenyum95-ship-it/AI-pola" target="_blank" rel="noreferrer">Lihat repositori GitHub ↗</a></footer>
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const panels={text:document.getElementById('textPanel'),number:document.getElementById('numberPanel'),pattern:document.getElementById('patternPanel')};
+const title=document.getElementById('resultTitle'),detail=document.getElementById('resultDetail');
+function result(t,d){title.textContent=t;detail.textContent=d}
+function showTab(name){tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===name)));Object.entries(panels).forEach(([k,v])=>v.classList.toggle('hidden',k!==name));result('Alat siap digunakan','Masukkan data lalu tekan tombol analisis.')}
+tabs.forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function classify(s){const t=s.toLowerCase();if(!t.trim())return null;const groups=[['sapaan',['halo','hai','selamat pagi','selamat siang','selamat malam','assalamualaikum','apa kabar']],['pertanyaan',['apa ','apa?','bagaimana','mengapa','kenapa','kapan','siapa','dimana','di mana','berapa','?']],['emosi positif',['senang','bahagia','gembira','suka','semangat','terima kasih','terimakasih','hebat']],['emosi negatif',['sedih','kecewa','takut','marah','khawatir','susah','bingung']]];for(const [label,words] of groups){if(words.some(w=>t.includes(w)))return label}return 'teks umum'}
+document.getElementById('classifyBtn').addEventListener('click',()=>{const s=document.getElementById('textInput').value;const c=classify(s);if(!c){result('Teks belum diisi','Tulis satu kalimat terlebih dahulu.');return}result(c.charAt(0).toUpperCase()+c.slice(1),'Hasil demo berdasarkan pencocokan kata kunci. Ini belum menunjukkan akurasi model ML terlatih.')});
+document.getElementById('textExample').addEventListener('click',()=>{document.getElementById('textInput').value='Halo, selamat pagi!';result('Contoh dimuat','Tekan Analisis teks untuk melihat hasil.')});
+document.getElementById('predictBtn').addEventListener('click',()=>{const raw=document.getElementById('numberInput').value;const x=Number(raw);if(raw.trim()===''||!Number.isFinite(x)){result('Angka tidak valid','Masukkan angka yang valid.');return}const y=2*x;result('Prediksi y = '+Number(y.toFixed(6)),'Dengan rumus demo y = 2x untuk x = '+x+'. Ini rumus contoh, bukan prediksi universal.')});
+document.getElementById('numberExample').addEventListener('click',()=>{document.getElementById('numberInput').value='11';result('Contoh dimuat','x = 11. Tekan Prediksi angka untuk menghitung.')});
+const centers=[{name:'Kelompok 1',x:1,y:1},{name:'Kelompok 2',x:5,y:5},{name:'Kelompok 3',x:9,y:1}];
+document.getElementById('patternBtn').addEventListener('click',()=>{const xr=document.getElementById('xInput').value,yr=document.getElementById('yInput').value,x=Number(xr),y=Number(yr);if(xr.trim()===''||yr.trim()===''||!Number.isFinite(x)||!Number.isFinite(y)){result('Nilai tidak valid','Isi X dan Y dengan angka.');return}const ranked=centers.map(c=>({...c,d:(x-c.x)**2+(y-c.y)**2})).sort((a,b)=>a.d-b.d);const c=ranked[0];result(c.name,'Titik ('+x+', '+y+') paling dekat dengan pusat contoh ('+c.x+', '+c.y+'). Demo memakai jarak Euclidean sederhana.')});
+document.getElementById('patternExample').addEventListener('click',()=>{document.getElementById('xInput').value='1';document.getElementById('yInput').value='1';result('Contoh dimuat','Titik (1, 1). Tekan Kenali pola untuk melihat kelompok.')});
+</script>
+</body>
+</html>
