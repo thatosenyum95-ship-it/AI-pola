@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Ai pola app icon</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101B3D"/>
+      <stop offset="1" stop-color="#17102F"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#49E7FF"/>
+      <stop offset="1" stop-color="#9B7BFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="250" r="151" fill="#172A55" opacity=".65"/>
+  <g stroke="url(#glow)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M256 151 L203 185 L173 232 L196 277 L178 321 L220 351 L256 329"/>
+    <path d="M256 151 L309 185 L339 232 L316 277 L334 321 L292 351 L256 329"/>
+    <path d="M203 185 L256 207 L309 185 M173 232 L222 239 L256 207 L290 239 L339 232"/>
+    <path d="M196 277 L235 277 L256 249 L277 277 L316 277 M178 321 L225 310 L256 329 L287 310 L334 321"/>
+    <path d="M256 151 V329 M222 239 L235 277 M290 239 L277 277"/>
+  </g>
+  <g fill="#F5FDFF" stroke="#53E7FF" stroke-width="5">
+    <circle cx="256" cy="151" r="13"/><circle cx="203" cy="185" r="12"/>
+    <circle cx="309" cy="185" r="12"/><circle cx="173" cy="232" r="12"/>
+    <circle cx="339" cy="232" r="12"/><circle cx="222" cy="239" r="11"/>
+    <circle cx="290" cy="239" r="11"/><circle cx="196" cy="277" r="12"/>
+    <circle cx="316" cy="277" r="12"/><circle cx="178" cy="321" r="12"/>
+    <circle cx="334" cy="321" r="12"/><circle cx="220" cy="351" r="12"/>
+    <circle cx="292" cy="351" r="12"/><circle cx="256" cy="207" r="13"/>
+    <circle cx="256" cy="249" r="13"/><circle cx="256" cy="329" r="13"/>
+  </g>
+  <path d="M207 390 Q256 410 305 390" fill="none" stroke="#9B7BFF" stroke-width="9" stroke-linecap="round"/>
+</svg>
