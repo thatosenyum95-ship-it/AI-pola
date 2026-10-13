@@ -1,53 +1,67 @@
-# Ai pola
+# Ai Pola
 
-**Ai pola** adalah proyek pembelajaran machine learning yang dirancang agar bisa dikembangkan dari HP Android menggunakan GitHub.
+**Ai Pola** adalah proyek pembelajaran machine learning untuk mengeksplorasi pola data. Versi ini menambahkan alur khusus untuk riwayat angka 4 digit, kandidat berikutnya, dan pengujian historis.
 
-## Fitur awal
+## Fitur
 
-1. **Klasifikasi teks** — model Naive Bayes sederhana yang belajar mengelompokkan teks ke kategori.
-2. **Prediksi angka** — regresi linear dari contoh data.
-3. **Pengenalan pola** — K-Means sederhana untuk mengelompokkan titik berdasarkan kemiripan.
+- **Analisis urutan 4 digit di website** — masukkan data dari yang paling lama ke paling baru; nol di depan tetap dipertahankan.
+- **Kandidat tunggal** — baseline frekuensi digit per posisi menghasilkan tepat satu kandidat jika tersedia minimal 5 data.
+- **Pencatatan harian** — tambahkan satu hasil terbaru, periksa apakah kandidat sebelumnya cocok, lalu perbarui kandidat.
+- **Backtest walk-forward** — tiap prediksi historis hanya memakai data yang sudah tersedia pada saat itu.
+- **Ringkasan digit** — tampilkan frekuensi digit pada setiap posisi.
+- **Penyimpanan lokal** — riwayat website disimpan di browser/perangkat yang digunakan; tidak dikirim ke server.
+- **Model edukasi lain** — skrip klasifikasi teks dan pengelompokan pola tetap tersedia.
 
-> Ini adalah model pembelajaran dasar, bukan model bahasa besar seperti GPT. Model belajar dari dataset contoh yang disediakan dan hasilnya perlu diuji pada data baru.
+## Cara kerja kandidat
+
+Pada masing-masing dari empat posisi, program memilih digit yang paling sering muncul di posisi tersebut. Jika beberapa digit seri, program memilih digit seri yang paling baru muncul. Keempat digit digabungkan menjadi satu kandidat.
+
+Ini adalah baseline sederhana yang transparan, bukan model yang terbukti mampu meramalkan hasil acak. Akurasi backtest dilaporkan sebagai kecocokan tepat seluruh 4 digit. Hasil historis tidak menjamin hasil berikutnya; jangan menggunakannya sebagai jaminan atau dasar taruhan.
+
+## Menggunakan website
+
+Buka [website melalui GitHub Pages](https://thatosenyum95-ship-it.github.io/AI-pola/) jika GitHub Pages telah diaktifkan pada repository. Jika belum aktif, buka `index.html` dari repository atau aktifkan Pages di Settings → Pages.
+
+1. Riwayat awal berisi contoh angka yang diberikan untuk memulai.
+2. Pastikan urutannya dari lama ke baru, lalu tekan **Gunakan riwayat** setelah mengedit.
+3. Setiap kali memperoleh hasil baru, masukkan satu angka tepat 4 digit ke bagian **Tambah hasil terbaru**.
+4. Baca kandidat dan evaluasi historis. Simpanan website berada di browser yang sama.
+
+## Menjalankan model Python
+
+Program memakai Python standard library:
+
+```bash
+python sequence_model.py 3849 8909 8448 9184 4864 5730 5991
+python -m unittest discover -s tests -v
+python train_text.py
+python train_numbers.py
+python train_patterns.py
+```
+
+Argumen angka harus berupa string 4 digit dan berurutan dari lama ke baru. Skrip Python memvalidasi format, menghasilkan satu kandidat, dan menjalankan backtest walk-forward.
 
 ## Struktur
 
 ```
 AI-pola/
+├── index.html
+├── sequence_model.py
+├── tests/
+│   └── test_sequence_model.py
 ├── datasets/
-│   ├── teks.csv
-│   ├── angka.csv
-│   └── pola.csv
-├── models/                 # hasil model dibuat saat program dijalankan
+├── models/
 ├── train_text.py
 ├── train_numbers.py
 ├── train_patterns.py
 └── .github/workflows/tests.yml
 ```
 
-## Cara menjalankan
+GitHub Actions menjalankan skrip model dan tes saat ada push atau pull request. Periksa tab **Actions** untuk status eksekusi terbaru.
 
-Program hanya menggunakan Python standard library, jadi tidak perlu memasang paket eksternal.
+## Privasi dan batasan
 
-Di lingkungan yang bisa menjalankan Python:
-
-```bash
-python train_text.py
-python train_numbers.py
-python train_patterns.py
-```
-
-Model hasil pelatihan disimpan sebagai file JSON di folder `models/`.
-
-## Menjalankan pemeriksaan lewat GitHub
-
-Workflow GitHub Actions menjalankan ketiga skrip setiap kali ada push atau pull request. Buka tab **Actions** di repositori untuk melihat log dan status tes.
-
-Catatan: GitHub menyimpan kode dan bisa menjalankan workflow otomatis dengan batas sumber daya tertentu. Ini tidak berarti GitHub menyediakan GPU untuk melatih model besar. Proyek awal ini sengaja memakai model kecil yang dapat dijalankan dengan CPU.
-
-## Dataset
-
-CSV di folder `datasets/` adalah data contoh untuk belajar. Tambahkan data yang relevan dan representatif sebelum menggunakan model untuk kebutuhan nyata. Hindari memasukkan informasi pribadi atau rahasia ke repositori publik.
+Website menyimpan riwayat di local storage browser. Menghapus data situs/browser dapat menghapus riwayat tersimpan. Jangan masukkan informasi pribadi atau rahasia ke repository publik.
 
 ## Lisensi
 
