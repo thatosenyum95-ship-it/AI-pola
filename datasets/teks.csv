@@ -1,0 +1,17 @@
+text,label
+"selamat pagi",sapaan
+"halo apa kabar",sapaan
+"selamat malam",sapaan
+"hai teman",sapaan
+"terima kasih banyak",apresiasi
+"makasih atas bantuanmu",apresiasi
+"saya sangat terbantu",apresiasi
+"ini jawaban yang bagus",apresiasi
+"bagaimana cara belajar python",pertanyaan
+"apa itu kecerdasan buatan",pertanyaan
+"mengapa langit tampak biru",pertanyaan
+"bisakah kamu menjelaskan ini",pertanyaan
+"saya merasa sedih hari ini",emosi
+"saya sedang senang",emosi
+"saya merasa khawatir",emosi
+"saya kecewa dengan hasilnya",emosi
