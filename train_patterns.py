@@ -12,7 +12,7 @@ def distance(a, b):
     return math.sqrt(sum((x - y) ** 2 for x, y in zip(a, b)))
 
 def mean(points):
-    return [sum(p[i] for p in points) / len(points) for i in range(len(points))]
+    return [sum(p[i] for p in points) / len(points) for i in range(len(points[0]))]
 
 def train(points, k=3, iterations=30):
     if len(points) < k:
