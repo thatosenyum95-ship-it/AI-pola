@@ -47,5 +47,24 @@ class SequenceModelTests(unittest.TestCase):
         self.assertEqual(result["correct"], 0)
 
 
+    def test_compare_models_preserves_four_digit_candidates_and_compares_same_window(self):
+        from sequence_model import compare_models
+
+        data = ["1234", "5678", "1234", "5678", "1234", "5678"] * 5
+        result = compare_models(data, minimum_history=5, recent_window=4)
+        self.assertEqual(result["history_size"], len(data))
+        self.assertEqual([m["name"] for m in result["models"]], [
+            "full_frequency", "recent_frequency", "digit_transition", "repeat_last"
+        ])
+        self.assertTrue(all(len(m["candidate"]) == 4 for m in result["models"]))
+        self.assertTrue(all(m["tested"] == len(data) - 5 for m in result["models"]))
+
+    def test_compare_models_empty_test_period_has_no_accuracy(self):
+        from sequence_model import compare_models
+
+        result = compare_models(["1234"] * 5, minimum_history=5)
+        self.assertTrue(all(m["exact_accuracy"] is None for m in result["models"]))
+
+
 if __name__ == "__main__":
     unittest.main()
