@@ -36,37 +36,15 @@ function loadSaved(){try{const d=JSON.parse(localStorage.getItem(KEY)||"null");i
 function persist(){try{localStorage.setItem(KEY,JSON.stringify({history,predictions}))}catch(e){$("message").textContent="Penyimpanan browser tidak tersedia; data hanya aktif sampai halaman ditutup."}}
 function candidate(data){if(data.length<5)return null;let out="";for(let p=0;p<4;p++){const counts=Array(10).fill(0);data.forEach(n=>counts[Number(n[p])]++);const max=Math.max(...counts);const tied=new Set(counts.map((v,d)=>v===max?String(d):null).filter(v=>v!==null));let winner=null;for(let i=data.length-1;i>=0;i--){const digit=data[i][p];if(tied.has(digit)){winner=digit;break}}out+=winner}return out}
 function backtest(data,minimum=5){const records=[];let correct=0;for(let i=minimum;i<data.length;i++){const predicted=candidate(data.slice(0,i));const actual=data[i];const hit=predicted===actual;correct+=hit?1:0;records.push({historySize:i,predicted,actual,exactMatch:hit})}return {tested:records.length,correct,rate:records.length?correct/records.length:null,records}}
-function modelPredictions(data){
- const full=candidate(data);
- const recent=data.length>=5?candidate(data.slice(-50)):full;
- let transition="";
- for(let p=0;p<4;p++){
-  const prev=data[data.length-1][p], counts=Array(10).fill(0), latest=Array(10).fill(-1);
-  for(let i=0;i<data.length-1;i++){if(data[i][p]===prev){const d=Number(data[i+1][p]);counts[d]++;latest[d]=i}}
-  if(!counts.some(v=>v>0)){for(const s of data)counts[Number(s[p])]++;}
-  const max=Math.max(...counts), tied=new Set(counts.map((v,d)=>v===max?String(d):null).filter(v=>v!==null));
-  let winner=null, latestIndex=-1;
-  for(let d=0;d<10;d++){if(tied.has(String(d))&&latest[d]>=latestIndex){winner=String(d);latestIndex=latest[d]}}
-  if(winner===null){const maxAll=Math.max(...counts);for(let i=data.length-1;i>=0;i--){if(counts[Number(data[i][p])]===maxAll){winner=data[i][p];break}}}
-  transition+=winner;
- }
- return [
-  {name:"Frekuensi seluruh riwayat",predict:d=>candidate(d),current:full},
-  {name:"Frekuensi 50 data terakhir",predict:d=>candidate(d.slice(-50)),current:recent},
-  {name:"Transisi digit",predict:d=>modelPredictionsTransition(d),current:transition},
-  {name:"Ulangi hasil terakhir",predict:d=>d[d.length-1],current:data[data.length-1]}
- ];
-}
 function modelPredictionsTransition(data){
  let out="";
  for(let p=0;p<4;p++){
   const prev=data[data.length-1][p], counts=Array(10).fill(0), latest=Array(10).fill(-1);
   for(let i=0;i<data.length-1;i++)if(data[i][p]===prev){const d=Number(data[i+1][p]);counts[d]++;latest[d]=i}
-  if(!counts.some(v=>v>0))data.forEach(s=>counts[Number(s[p])]++);
+  if(!counts.some(v=>v>0)){out+=candidate(data)[p];continue}
   const max=Math.max(...counts), tied=new Set(counts.map((v,d)=>v===max?String(d):null).filter(v=>v!==null));
   let winner=null, latestIndex=-1;
-  for(let d=0;d<10;d++)if(tied.has(String(d))&&latest[d]>=latestIndex){winner=String(d);latestIndex=latest[d]}
-  if(winner===null){for(let i=data.length-1;i>=0;i--)if(counts[Number(data[i][p])]===max){winner=data[i][p];break}}
+  for(let d=0;d<10;d++)if(tied.has(String(d))&&latest[d]>latestIndex){winner=String(d);latestIndex=latest[d]}
   out+=winner;
  }
  return out;
