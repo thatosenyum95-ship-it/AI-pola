@@ -1,81 +1,44 @@
 <!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071225">
-<meta name="description" content="AI Pola — demo klasifikasi teks, prediksi angka, dan pengenalan pola.">
-<title>AI Pola — Belajar Mengenali Pola</title>
+<meta name="description" content="Ai Pola: riwayat angka 4 digit, kandidat berikutnya, dan evaluasi historis.">
+<title>Ai Pola — Prediksi Urutan 4 Digit</title>
 <style>
-:root{color-scheme:dark;--bg:#071225;--panel:#0e1b33;--panel2:#122443;--text:#edf5ff;--muted:#a6b5cf;--cyan:#48e0e8;--purple:#9a83ff;--line:#263b5e;--green:#7be7b1}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#1a2752 0,transparent 35%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1080px,92%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:16px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:1.1rem;letter-spacing:.2px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#163a63,#281d5e);display:grid;place-items:center;border:1px solid #41618e}.logo svg{width:29px}.pill{border:1px solid var(--line);border-radius:99px;color:var(--muted);padding:7px 12px;font-size:.78rem}.hero{padding:44px 0 30px;max-width:760px}.eyebrow{color:var(--cyan);font-size:.8rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(2.25rem,7vw,4.5rem);line-height:1.05;letter-spacing:-2px;margin:14px 0}.grad{background:linear-gradient(90deg,var(--cyan),#a7a0ff);color:transparent;background-clip:text}.hero p{color:var(--muted);font-size:1.06rem;max-width:650px}.status{display:inline-flex;align-items:center;gap:8px;margin-top:10px;color:#c5d3e9;font-size:.85rem}.dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 14px #7be7b1}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0 18px}.tab{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px 10px;text-align:left;color:var(--muted);transition:.2s}.tab strong{display:block;color:var(--text);font-size:.95rem;margin:4px 0}.tab span{font-size:1.3rem}.tab[aria-selected=true]{border-color:var(--cyan);background:linear-gradient(145deg,#102d48,#171d42);box-shadow:0 0 0 1px #48e0e822}.workspace{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:stretch}.card{background:linear-gradient(150deg,#101f39,#0c182c);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,28px);min-width:0}.card h2{margin:0 0 6px;font-size:1.3rem}.muted{color:var(--muted)}.small{font-size:.88rem}.field{display:block;margin:20px 0 10px;font-weight:700;font-size:.92rem}textarea,input{width:100%;background:#071225;border:1px solid #2c4265;border-radius:12px;color:var(--text);padding:14px;outline:none}textarea{resize:vertical;min-height:120px}input:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #48e0e81a}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.primary,.secondary{border-radius:12px;padding:12px 16px;font-weight:800;border:1px solid transparent}.primary{background:linear-gradient(100deg,var(--cyan),#91b5ff);color:#071225}.secondary{background:#142541;color:var(--text);border-color:#2b4163}.result{margin-top:20px;border:1px dashed #3a5278;border-radius:14px;padding:16px;background:#09152a;min-height:96px}.result .label{font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}.result strong{display:block;font-size:1.25rem;margin:5px 0;color:var(--cyan);overflow-wrap:anywhere}.result p{margin:5px 0 0;color:var(--muted);font-size:.9rem}.side-title{font-weight:800;margin:0 0 12px}.feature{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #20324e}.feature:last-child{border:0}.feature-icon{width:38px;height:38px;flex:none;border-radius:12px;background:#152b4a;display:grid;place-items:center}.feature b{display:block;font-size:.93rem}.feature p{margin:3px 0 0;color:var(--muted);font-size:.83rem}.notice{border:1px solid #4c4381;background:#211e43;color:#d9d4ff;border-radius:12px;padding:12px 14px;margin-top:18px;font-size:.83rem}.hidden{display:none!important}.footer{padding:34px 0 40px;color:var(--muted);font-size:.82rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.footer a{color:var(--cyan);text-decoration:none}.tag{display:inline-block;border-radius:7px;padding:3px 8px;background:#17334c;color:var(--cyan);font-size:.74rem;margin-top:8px}@media(max-width:720px){.hero{padding-top:28px}.workspace{grid-template-columns:1fr}.tabs{gap:7px}.tab{padding:12px 9px}.tab strong{font-size:.82rem}.tab span{font-size:1.1rem}.pill{font-size:.7rem}.footer{padding-bottom:25px}}@media(max-width:390px){.tabs{grid-template-columns:1fr}.tab{display:flex;align-items:center;gap:12px}.tab strong{margin:0}.tab small{margin-left:auto}}
-</style>
-</head>
-<body>
-<header class="wrap top">
-  <div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><g stroke="#48e0e8" stroke-width="1.8"><path d="M10 10L20 20 30 9M10 30L20 20 30 30M10 10V30M30 9V30"/></g><g fill="#9a83ff" stroke="#071225" stroke-width="1.5"><circle cx="10" cy="10" r="4"/><circle cx="30" cy="9" r="4"/><circle cx="10" cy="30" r="4"/><circle cx="30" cy="30" r="4"/></g><circle cx="20" cy="20" r="5" fill="#48e0e8"/></svg></div><span>AI POLA</span></div>
-  <span class="pill">PROTOTIPE v1.0</span>
-</header>
-<main class="wrap">
-<section class="hero">
-  <div class="eyebrow">Eksperimen kecerdasan buatan</div>
-  <h1>Belajar mengenali<br><span class="grad">pola dengan AI.</span></h1>
-  <p>Tempat sederhana untuk mencoba tiga kemampuan: memahami kategori teks, memperkirakan angka, dan mengelompokkan pola data.</p>
-  <div class="status"><span class="dot"></span> Demo interaktif berjalan di perangkatmu</div>
-</section>
-<nav class="tabs" aria-label="Pilih alat AI">
-  <button class="tab" data-tab="text" aria-selected="true"><span>✦</span><strong>Klasifikasi Teks</strong><small>Kelompokkan kalimat</small></button>
-  <button class="tab" data-tab="number" aria-selected="false"><span>∑</span><strong>Prediksi Angka</strong><small>Perkirakan nilai</small></button>
-  <button class="tab" data-tab="pattern" aria-selected="false"><span>⌘</span><strong>Pengenalan Pola</strong><small>Kelompokkan titik</small></button>
-</nav>
-<section class="workspace">
-<div class="card">
-  <div id="textPanel">
-    <h2>Klasifikasi teks</h2><p class="muted small">Tulis kalimat, lalu lihat kategori yang paling cocok menurut aturan demo.</p>
-    <label class="field" for="textInput">Kalimat yang ingin diperiksa</label>
-    <textarea id="textInput" maxlength="500" placeholder="Contoh: Halo, selamat pagi!"></textarea>
-    <div class="actions"><button class="primary" id="classifyBtn">Analisis teks ↗</button><button class="secondary" id="textExample">Coba contoh</button></div>
-  </div>
-  <div id="numberPanel" class="hidden">
-    <h2>Prediksi angka</h2><p class="muted small">Demo memakai contoh hubungan linear y = 2x. Masukkan angka x untuk menghitung perkiraan y.</p>
-    <label class="field" for="numberInput">Nilai x</label><input id="numberInput" type="number" step="any" value="11" placeholder="Masukkan angka">
-    <div class="actions"><button class="primary" id="predictBtn">Prediksi angka ↗</button><button class="secondary" id="numberExample">Isi contoh</button></div>
-  </div>
-  <div id="patternPanel" class="hidden">
-    <h2>Pengenalan pola</h2><p class="muted small">Masukkan dua nilai untuk melihat kelompok terdekat dari tiga pusat contoh.</p>
-    <label class="field" for="xInput">Nilai X</label><input id="xInput" type="number" step="any" value="1">
-    <label class="field" for="yInput">Nilai Y</label><input id="yInput" type="number" step="any" value="1">
-    <div class="actions"><button class="primary" id="patternBtn">Kenali pola ↗</button><button class="secondary" id="patternExample">Isi contoh</button></div>
-  </div>
-  <div class="result" aria-live="polite"><div class="label">Hasil analisis</div><strong id="resultTitle">AI Pola siap dicoba</strong><p id="resultDetail">Pilih salah satu alat dan masukkan data untuk memulai.</p></div>
-  <div class="notice">Catatan: ini masih prototipe edukasi berbasis aturan sederhana di browser, bukan model bahasa besar dan belum terhubung ke model Python di repositori.</div>
-</div>
-<aside class="card">
-  <h2 class="side-title">Apa yang bisa dicoba?</h2>
-  <div class="feature"><div class="feature-icon">✦</div><div><b>Klasifikasi teks</b><p>Mengelompokkan kalimat sebagai sapaan, pertanyaan, emosi, atau kategori lain berdasarkan kata kunci.</p></div></div>
-  <div class="feature"><div class="feature-icon">∑</div><div><b>Prediksi angka</b><p>Menghitung perkiraan dari contoh hubungan angka sederhana.</p></div></div>
-  <div class="feature"><div class="feature-icon">⌘</div><div><b>Pengenalan pola</b><p>Membandingkan titik dengan tiga kelompok contoh menggunakan jarak terdekat.</p></div></div>
-  <div class="tag">Dirancang untuk layar HP</div>
-  <p class="muted small" style="margin-top:18px">Langkah berikutnya: hubungkan antarmuka ini dengan model AI Pola yang dilatih dari dataset proyek.</p>
-</aside>
-</section>
-</main>
-<footer class="wrap footer"><span>© 2026 AI Pola · Proyek belajar AI</span><a href="https://github.com/thatosenyum95-ship-it/AI-pola" target="_blank" rel="noreferrer">Lihat repositori GitHub ↗</a></footer>
+:root{color-scheme:dark;--bg:#071225;--panel:#101f39;--line:#2a4163;--text:#edf5ff;--muted:#a6b5cf;--cyan:#48e0e8;--green:#7be7b1;--amber:#ffd27a;--red:#ff9caa}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% 0%,#1a2752 0,transparent 35%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,textarea{font:inherit}.wrap{width:min(1000px,92%);margin:auto}.top{padding:22px 0;display:flex;justify-content:space-between;gap:12px;align-items:center}.brand{font-weight:850;letter-spacing:.5px;font-size:1.1rem}.pill{border:1px solid var(--line);border-radius:99px;padding:6px 11px;color:var(--muted);font-size:.78rem}.hero{padding:26px 0}.eyebrow{color:var(--cyan);font-size:.78rem;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}.hero h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.08;letter-spacing:-1px;margin:10px 0}.hero p,.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.card{background:linear-gradient(150deg,#101f39,#0c182c);border:1px solid var(--line);border-radius:18px;padding:clamp(17px,3vw,25px);min-width:0}.card h2{font-size:1.2rem;margin:0 0 5px}.small{font-size:.88rem}.field{display:block;margin:18px 0 7px;font-weight:700;font-size:.92rem}textarea,input{width:100%;background:#071225;border:1px solid #344c70;border-radius:11px;padding:12px;color:var(--text);outline:none}textarea{min-height:150px;resize:vertical}input:focus,textarea:focus{border-color:var(--cyan)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}button{border-radius:11px;padding:11px 14px;font-weight:800;border:1px solid transparent;cursor:pointer}.primary{background:linear-gradient(100deg,var(--cyan),#91b5ff);color:#071225}.secondary{background:#142541;color:var(--text);border-color:#2b4163}.danger{background:#321d2b;color:#ffd8df;border-color:#693647}.candidate{font-size:clamp(2.5rem,8vw,4.3rem);letter-spacing:7px;font-weight:900;color:var(--cyan);margin:8px 0;line-height:1.2}.metric{background:#09152a;border:1px solid var(--line);border-radius:12px;padding:13px;margin-top:12px}.metric b{display:block;font-size:1.2rem}.notice{border:1px solid #65572e;background:#292719;color:#ffedb7;border-radius:12px;padding:12px;margin-top:14px;font-size:.85rem}.good{color:var(--green)}.bad{color:var(--red)}.history{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.num{font-variant-numeric:tabular-nums;border:1px solid #2b4163;background:#09152a;border-radius:8px;padding:5px 8px;font-weight:700}.barrow{display:grid;grid-template-columns:70px 1fr 35px;gap:8px;align-items:center;font-size:.83rem;margin:8px 0}.bar{height:8px;background:#1d304d;border-radius:8px;overflow:hidden}.bar span{display:block;height:100%;background:var(--cyan)}.footer{color:var(--muted);font-size:.8rem;padding:25px 0 38px}.hidden{display:none!important}@media(max-width:720px){.grid{grid-template-columns:1fr}.top{align-items:flex-start}.candidate{letter-spacing:4px}}
+</style></head>
+<body><header class="wrap top"><div class="brand">◈ AI POLA</div><span class="pill">URUTAN 4 DIGIT · V1.1</span></header>
+<main class="wrap"><section class="hero"><div class="eyebrow">Analisis data berurutan</div><h1>Satu riwayat.<br><span style="color:var(--cyan)">Satu kandidat berikutnya.</span></h1><p>Masukkan data lama ke baru, simpan satu hasil terbaru setiap hari, dan pantau evaluasi historis tanpa mengklaim pola yang belum terbukti.</p></section>
+<div class="grid"><section class="card"><h2>Riwayat angka</h2><p class="muted small">Satu angka per baris atau pisahkan dengan spasi/koma. Nol di depan tetap dipertahankan. Urutan harus dari paling lama ke paling baru.</p>
+<label class="field" for="dataset">Data awal / riwayat lengkap</label><textarea id="dataset" spellcheck="false"></textarea>
+<div class="actions"><button class="primary" id="loadBtn">Gunakan riwayat</button><button class="secondary" id="seedBtn">Pulihkan data awal</button></div>
+<hr style="border:0;border-top:1px solid var(--line);margin:22px 0">
+<h2>Tambah hasil terbaru</h2><p class="muted small">Masukkan satu hasil aktual. Ai Pola akan mengevaluasi kandidat sebelumnya, lalu menghitung kandidat berikutnya.</p>
+<label class="field" for="latest">Angka terbaru (4 digit)</label><input id="latest" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="Contoh: 0940">
+<div class="actions"><button class="primary" id="addBtn">Simpan angka terbaru</button><button class="danger" id="resetBtn">Hapus riwayat tersimpan</button></div><p id="message" class="small muted" aria-live="polite"></p></section>
+<aside class="card"><h2>Kandidat berikutnya</h2><p class="muted small">Baseline frekuensi per posisi, bukan kepastian.</p><div id="candidate" class="candidate">----</div><div id="explain" class="muted small">Masukkan minimal beberapa angka untuk memulai analisis.</div>
+<div class="metric"><span class="muted small">Jumlah data</span><b id="count">0</b></div><div class="metric"><span class="muted small">Akurasi tepat 4 digit pada backtest berjalan</span><b id="accuracy">Belum cukup data</b><span id="tested" class="muted small"></span></div>
+<div class="notice">Penting: angka yang tampak acak mungkin tidak memiliki pola prediktif. Kandidat adalah keluaran metode sederhana, bukan jaminan atau saran taruhan.</div></aside></div>
+<section class="card" style="margin-top:16px"><h2>Ringkasan posisi digit</h2><p class="muted small">Frekuensi setiap digit dalam masing-masing posisi pada riwayat yang tersedia.</p><div id="positions"></div></section>
+<section class="card" style="margin-top:16px"><h2>Riwayat tersimpan</h2><p class="muted small">Urutan lama → baru. Penyimpanan harian berada di browser/perangkat ini.</p><div id="history" class="history"></div></section>
+</main><footer class="wrap footer">Ai Pola · Kandidat tidak dijamin benar. Data tersimpan lokal di browser dan tidak dikirim ke server.</footer>
 <script>
-const tabs=[...document.querySelectorAll('.tab')];
-const panels={text:document.getElementById('textPanel'),number:document.getElementById('numberPanel'),pattern:document.getElementById('patternPanel')};
-const title=document.getElementById('resultTitle'),detail=document.getElementById('resultDetail');
-function result(t,d){title.textContent=t;detail.textContent=d}
-function showTab(name){tabs.forEach(b=>b.setAttribute('aria-selected',String(b.dataset.tab===name)));Object.entries(panels).forEach(([k,v])=>v.classList.toggle('hidden',k!==name));result('Alat siap digunakan','Masukkan data lalu tekan tombol analisis.')}
-tabs.forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
-function classify(s){const t=s.toLowerCase();if(!t.trim())return null;const groups=[['sapaan',['halo','hai','selamat pagi','selamat siang','selamat malam','assalamualaikum','apa kabar']],['pertanyaan',['apa ','apa?','bagaimana','mengapa','kenapa','kapan','siapa','dimana','di mana','berapa','?']],['emosi positif',['senang','bahagia','gembira','suka','semangat','terima kasih','terimakasih','hebat']],['emosi negatif',['sedih','kecewa','takut','marah','khawatir','susah','bingung']]];for(const [label,words] of groups){if(words.some(w=>t.includes(w)))return label}return 'teks umum'}
-document.getElementById('classifyBtn').addEventListener('click',()=>{const s=document.getElementById('textInput').value;const c=classify(s);if(!c){result('Teks belum diisi','Tulis satu kalimat terlebih dahulu.');return}result(c.charAt(0).toUpperCase()+c.slice(1),'Hasil demo berdasarkan pencocokan kata kunci. Ini belum menunjukkan akurasi model ML terlatih.')});
-document.getElementById('textExample').addEventListener('click',()=>{document.getElementById('textInput').value='Halo, selamat pagi!';result('Contoh dimuat','Tekan Analisis teks untuk melihat hasil.')});
-document.getElementById('predictBtn').addEventListener('click',()=>{const raw=document.getElementById('numberInput').value;const x=Number(raw);if(raw.trim()===''||!Number.isFinite(x)){result('Angka tidak valid','Masukkan angka yang valid.');return}const y=2*x;result('Prediksi y = '+Number(y.toFixed(6)),'Dengan rumus demo y = 2x untuk x = '+x+'. Ini rumus contoh, bukan prediksi universal.')});
-document.getElementById('numberExample').addEventListener('click',()=>{document.getElementById('numberInput').value='11';result('Contoh dimuat','x = 11. Tekan Prediksi angka untuk menghitung.')});
-const centers=[{name:'Kelompok 1',x:1,y:1},{name:'Kelompok 2',x:5,y:5},{name:'Kelompok 3',x:9,y:1}];
-document.getElementById('patternBtn').addEventListener('click',()=>{const xr=document.getElementById('xInput').value,yr=document.getElementById('yInput').value,x=Number(xr),y=Number(yr);if(xr.trim()===''||yr.trim()===''||!Number.isFinite(x)||!Number.isFinite(y)){result('Nilai tidak valid','Isi X dan Y dengan angka.');return}const ranked=centers.map(c=>({...c,d:(x-c.x)**2+(y-c.y)**2})).sort((a,b)=>a.d-b.d);const c=ranked[0];result(c.name,'Titik ('+x+', '+y+') paling dekat dengan pusat contoh ('+c.x+', '+c.y+'). Demo memakai jarak Euclidean sederhana.')});
-document.getElementById('patternExample').addEventListener('click',()=>{document.getElementById('xInput').value='1';document.getElementById('yInput').value='1';result('Contoh dimuat','Titik (1, 1). Tekan Kenali pola untuk melihat kelompok.')});
-</script>
-</body>
-</html>
+const SEED = "3849 8909 8448 9184 4864 5730 5991 9766 7005 8551 0940 3688 4043 9301 4967 5889 9385 2771 1297 9578 2931 5741 1105 2736 3352";
+const KEY = "ai-pola-sequence-v1";
+const $ = id => document.getElementById(id);
+let history = [];
+let predictions = [];
+function validList(text){const tokens=text.trim().split(/[\s,;]+/).filter(Boolean);if(!tokens.length)throw Error("Riwayat masih kosong.");const bad=tokens.find(x=>!/^[0-9]{4}$/.test(x));if(bad)throw Error('"' + bad + '" bukan angka 4 digit.');return tokens;}
+function loadSaved(){try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(d&&Array.isArray(d.history)&&d.history.every(x=>/^[0-9]{4}$/.test(x))){history=d.history;predictions=Array.isArray(d.predictions)?d.predictions:[];return true}}catch(e){}return false}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify({history,predictions}))}catch(e){$("message").textContent="Penyimpanan browser tidak tersedia; data hanya aktif sampai halaman ditutup."}}
+function candidate(data){if(data.length<5)return null;let out="";for(let p=0;p<4;p++){const counts=Array(10).fill(0);for(const s of data)counts[Number(s[p])]++;const max=Math.max(...counts);let chosen=-1;for(let i=data.length-1;i>=0;i--){const d=Number(data[i][p]);if(counts[d]===max){chosen=d;break}}out+=String(chosen)}return out}
+function backtest(data){let tested=0,correct=0;for(let i=5;i<data.length;i++){const pred=candidate(data.slice(0,i));if(pred!==null){tested++;if(pred===data[i])correct++}}return {tested,correct,rate:tested?correct/tested:null}}
+function render(){ $("dataset").value=history.join("\n");$("count").textContent=history.length.toLocaleString("id-ID");$("history").innerHTML="";history.slice(-100).forEach(n=>{const e=document.createElement("span");e.className="num";e.textContent=n;$("history").appendChild(e)});const c=candidate(history);$("candidate").textContent=c||"----";$("explain").textContent=c?"Setiap posisi memakai digit dengan frekuensi tertinggi pada riwayat. Jika seri, dipilih digit yang paling baru muncul di antara digit seri.":"Tambahkan minimal 5 angka valid.";const bt=backtest(history);$("accuracy").textContent=bt.rate===null?"Belum cukup data":(bt.rate*100).toFixed(2)+"%";$("tested").textContent=bt.tested?bt.correct+" tepat dari "+bt.tested+" prediksi historis; pembagian data dilakukan berurutan.":"Butuh lebih banyak data untuk evaluasi.";const pos=$("positions");pos.innerHTML="";for(let p=0;p<4;p++){const counts=Array(10).fill(0);history.forEach(s=>counts[Number(s[p])]++);const total=history.length||1;const wrap=document.createElement("div");wrap.style.margin="16px 0";const heading=document.createElement("b");heading.textContent=["Digit pertama","Digit kedua","Digit ketiga","Digit keempat"][p];wrap.appendChild(heading);for(let d=0;d<10;d++){const row=document.createElement("div");row.className="barrow";const label=document.createElement("span");label.textContent="Digit "+d;const bar=document.createElement("div");bar.className="bar";const fill=document.createElement("span");fill.style.width=(counts[d]/total*100)+"%";bar.appendChild(fill);const val=document.createElement("span");val.textContent=counts[d];row.append(label,bar,val);wrap.appendChild(row)}pos.appendChild(wrap)}}
+$("loadBtn").addEventListener("click",()=>{try{history=validList($("dataset").value);predictions=[];persist();render();$("message").textContent="Riwayat dimuat: "+history.length+" angka, dari lama ke baru."}catch(e){$("message").textContent=e.message}});
+$("seedBtn").addEventListener("click",()=>{$("dataset").value=SEED;try{history=validList(SEED);predictions=[];persist();render();$("message").textContent="Data awal dipulihkan ("+history.length+" angka)."}catch(e){$("message").textContent=e.message}});
+$("addBtn").addEventListener("click",()=>{const n=$("latest").value.trim();if(!/^[0-9]{4}$/.test(n)){$("message").textContent="Masukkan tepat 4 digit, termasuk nol di depan jika ada.";return}if(history.length&&history[history.length-1]===n){$("message").textContent="Angka ini sama dengan data terakhir. Pastikan bukan entri duplikat.";return}const previous=candidate(history);if(previous){const hit=previous===n;predictions.push({predicted:previous,actual:n,hit});$("message").textContent="Prediksi sebelumnya "+previous+" — hasil aktual "+n+": "+(hit?"tepat 4 digit.":"tidak tepat 4 digit.")}else{$("message").textContent="Angka ditambahkan; data belum cukup untuk prediksi sebelumnya."}history.push(n);$("latest").value="";persist();render()});
+$("resetBtn").addEventListener("click",()=>{if(!confirm("Hapus riwayat lokal dan kembali ke data awal?"))return;history=validList(SEED);predictions=[];persist();render();$("message").textContent="Riwayat lokal direset ke data awal."});
+if(!loadSaved()){history=validList(SEED);predictions=[];persist()}render();
+</script></body></html>
